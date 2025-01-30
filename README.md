@@ -1,7 +1,5 @@
 # hr-onboarding-system
 
-# hr-onboarding-system
-
 # Project Documentation
 
 ## Setup Instructions
