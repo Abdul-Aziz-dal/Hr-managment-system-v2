@@ -5,9 +5,9 @@ class RedisStorage {
     private $isConnected = false;
     public $PORT=6379;
     public function __construct() {
-        $this->redis = new Redis();
         try {
-            $this->isConnected = $this->redis->connect('127.0.0.1', $this->PORT);
+            $this->redis = new Redis();
+            $this->isConnected = $this->redis->connect('http://3.92.191.85', $this->PORT);
             if (!$this->isConnected) {
                 throw new RedisException("Unable to connect to Redis.");
             }
