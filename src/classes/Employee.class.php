@@ -10,9 +10,6 @@ require_once(__DIR__ .'/../library/googleApi.config/GoogleDriveUploadAPI.php');
 checkRequestMethod();
 session_start();
 
-echo 'okkkkkkkkk';
-die;
-
 class Employee{
     //****Variables*****//
     private $db;
@@ -198,7 +195,10 @@ class Employee{
                     //fetch from db and store in redis
                     $employees = $this->executeEmployeesQuery($this->db);
                     if (!empty($employees)) {
-                        $this->setRedis($redis,'employees',$employees);
+                         if($this->storage->isConnected()){
+                         $this->setRedis($redis,'employees',$employees);
+                         }
+                         
                         $response = [
                             'status' => true,
                             'message' => 'Records retrieved from database and cached in Redis',
