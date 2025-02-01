@@ -162,6 +162,7 @@ class Employee{
     }
    
     public function executeEmployeesQuery($db){
+        try{
         $query = "SELECT E.*,E.EmployeeName,D.DepartmentName AS Department,U.Name AS Manager,E.Status,E.AddedOn,E.UpdatedOn FROM employees  AS E
                   INNER JOIN departments AS D ON E.DepartmentId = D.DepartmentId
                   INNER JOIN users AS U ON E.ManagerId = U.UserId";
@@ -173,6 +174,10 @@ class Employee{
             else{
                 return [];
             }
+
+        } catch (\Throwable $th) {
+            return [];
+        }  
              
     }
 
@@ -198,7 +203,7 @@ class Employee{
                          if($this->storage->isConnected()){
                          $this->setRedis($redis,'employees',$employees);
                          }
-                         
+
                         $response = [
                             'status' => true,
                             'message' => 'Records retrieved from database and cached in Redis',
