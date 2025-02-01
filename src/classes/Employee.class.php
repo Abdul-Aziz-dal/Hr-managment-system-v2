@@ -9,6 +9,10 @@ require_once(__DIR__ .'/../library/googleApi.config/GoogleDriveUploadAPI.php');
 
 checkRequestMethod();
 session_start();
+
+echo 'okkkkkkkkk';
+die;
+
 class Employee{
     //****Variables*****//
     private $db;

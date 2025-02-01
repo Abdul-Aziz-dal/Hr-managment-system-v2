@@ -19,6 +19,4 @@ if ($_SERVER['REQUEST_METHOD'] != "POST") {
 //*****ImportingLibraies******//
 require_once '../../classes/Employee.class.php';
 $employee = new Employee();
-echo "ok";
-die;
 $employee->viewEmployees();
