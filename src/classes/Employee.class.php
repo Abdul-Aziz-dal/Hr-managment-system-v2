@@ -16,9 +16,12 @@ class Employee{
     private $storage;
     public function __construct()
     {
-
+       try{
         $this->db = new Database();
         $this->storage = new RedisStorage(); //Redis connectivity
+    } catch (\Throwable $th) {
+        return [];
+    }
 
     }
 
@@ -183,13 +186,12 @@ class Employee{
 
     public function viewEmployees()
     {
-        echo "aaaaaaaaaaa";
-        die;
         try {
 
             $employees=[];
-            $redis = $this->storage->getRedisInstance();
+             
             if ($this->storage->isConnected()) {
+                $redis = $this->storage->getRedisInstance();
                 if ($redis->exists('employees')) {
                     $employees=  $this->getRedis($redis,"employees");
                     $response = [

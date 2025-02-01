@@ -8,12 +8,8 @@ class RedisStorage {
         try {
             $this->redis = new Redis();
             $this->isConnected = $this->redis->connect('3.92.191.85:80', $this->PORT);
-            if (!$this->isConnected) {
-                throw new RedisException("Unable to connect to Redis.");
-            }
         } catch (RedisException $e) {
             $this->isConnected = false;
-            error_log("Redis connection failed: " . $e->getMessage());
         }
     }
 
