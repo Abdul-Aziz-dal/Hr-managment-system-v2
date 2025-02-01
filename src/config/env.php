@@ -1,10 +1,11 @@
 <?php
 
 //*****MysqlENV*********//
-define('DB_HOST', 'localhost');
+define('DB_HOST', 'hr-system-db.cj4ukegkeuvq.us-east-1.rds.amazonaws.com');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', 'Hrsystem12$$$');
 define('DB_NAME', 'hr-system');
+
 $baseUrl=rtrim($_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'], '/');
 define('BASE_URL', $baseUrl);
 
