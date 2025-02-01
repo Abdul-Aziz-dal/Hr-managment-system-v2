@@ -16,9 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] != "POST") {
     http_response_code(400);
     die;
 }
-echo "ok";
-die;
 //*****ImportingLibraies******//
 require_once '../../classes/Employee.class.php';
+echo "ok";
+die;
 $employee = new Employee();
 $employee->viewEmployees();
