@@ -190,7 +190,7 @@ class Employee{
 
             $employees=[];
              
-            if ($this->storage->isConnected()) {
+            if ($this->storage && $this->storage->isConnected()) {
                 $redis = $this->storage->getRedisInstance();
                 if ($redis->exists('employees')) {
                     $employees=  $this->getRedis($redis,"employees");
