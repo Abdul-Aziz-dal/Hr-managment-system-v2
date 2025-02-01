@@ -1,3 +1,3 @@
 <?php
-
-$basePath = "http://localhost/hr-onboarding-system";
+require_once __DIR__ ."/env.php";
+$basePath = $baseUrl."/hr-onboarding-system";
