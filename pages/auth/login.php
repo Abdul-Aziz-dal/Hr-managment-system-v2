@@ -134,6 +134,7 @@ if (isset($_SESSION['user'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.min.js" integrity="sha512-KFHXdr2oObHKI9w4Hv1XPKc898mE4kgYx58oqsc/JqqdLMDI4YjOLzom+EMlW8HFUd0QfjfAvxSL6sEq/a42fQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src='../assets/js/path.config.js'></script>
 
     <script>
         $(document).ready(function() {
@@ -160,9 +161,8 @@ if (isset($_SESSION['user'])) {
                     }
                 },
                 submitHandler: function(form) {
-                   console.log("form ",form);
                     $.ajax({
-                        url: 'http://localhost/hr-onboarding-system/src/api/auth/login.php',
+                        url: baseURL+"/src/api/auth/login.php",
                         type: 'POST',
                         data: $(form).serialize(),
                         success: function(response) {
@@ -171,7 +171,7 @@ if (isset($_SESSION['user'])) {
                                 toastr.success(response.message, 'Success');
 
                                 setTimeout(function() {
-                                    window.location.href = 'http://localhost/hr-onboarding-system/';
+                                    window.location.href = baseURL+"/";
                                 }, 500);
 
                             } else {
