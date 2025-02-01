@@ -292,7 +292,7 @@ class Employee{
                 $mail= new SendGridSendEmail();
                 $response=$mail->sendEmailWithCurl($managerEmail, "Hr Management", "A new employee registered", "Account Created with name : '$name' and Email : '$email' ");
                 //invalidate Redis
-                if ($this->storage->isConnected()) { 
+                if ($this->storage && $this->storage->isConnected()) { 
                     $redis = $this->storage->getRedisInstance();
                     if ($redis->exists('employees')) {
                         $employeData = [
@@ -354,7 +354,7 @@ class Employee{
             $result = $this->db->query($updateQuery);
 
           
-            if ($this->storage->isConnected()) {
+            if ($this->storage && $this->storage->isConnected()) {
                 $redis = $this->storage->getRedisInstance();
                 if ($redis->exists('employees')) {
                     $existingEmployees = $this->getRedis($redis,"employees");

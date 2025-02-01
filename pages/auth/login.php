@@ -121,7 +121,7 @@ if (isset($_SESSION['user'])) {
                     <div class="card-footer bg-custom p-0 d-flex align-items-center justify-content-center"
                         style="min-height: 30px;">
                         <p class="mb-0 text-light" style="font-size:12px">&copy; <?php echo date('Y-m-d') ?> - <a
-                                href="https://developerarsalanahmed.com/" class="text-light">Abdul Aziz</a> - All rights
+                                href="#" class="text-light">Abdul Aziz</a> - All rights
                             reserved.</p>
                     </div>
                 </div>
