@@ -183,7 +183,8 @@ class Employee{
 
     public function viewEmployees()
     {
-        
+        echo "aaaaaaaaaaa";
+        die;
         try {
 
             $employees=[];
