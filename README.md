@@ -1,12 +1,10 @@
-# hr-onboarding-system
-
 # Project Documentation
 
 ## Setup Instructions
 
 ### Environment Variables
 
-All environment variables are stored in a `.env` file for security and ease of configuration. These include:
+All environment variables are stored in a `env.php` (must be .env file) file for security and ease of configuration. These include:
 
 - **Database Configurations**: Host, username, password, and database name.
 - **OAuth Credentials**: Google OAuth keys for authentication.
@@ -15,7 +13,7 @@ All environment variables are stored in a `.env` file for security and ease of c
 
 ### Database Setup
 
-Ensure the database is properly configured by updating the `.env` file with your credentials. The project uses **MySQL** with `mysqli_connect` for database interactions.
+Ensure the database is properly configured by updating the `env.php` file with your credentials. The project uses **MySQL** with `mysqli_connect` for database interactions.
 
 ### OAuth Setup (Google Integration)
 
@@ -23,7 +21,7 @@ OAuth authentication for Google is implemented using `cURL`. This is done to sec
 
 1. Create credentials in the [Google Developer Console](https://console.cloud.google.com/).
 2. Enable OAuth and get the Client ID & Client Secret.
-3. Add these credentials to the `.env` file.
+3. Add these credentials to the `env.php` ( must create .env file) file.
 4. Implemented using `cURL` requests to authenticate users securely.
 
 ### Caching & Performance Optimization
@@ -48,7 +46,6 @@ For caching and performance, **Redis** is integrated into the project. The Redis
 ### Handling Logging
 
 - Logs can be configured to store detailed error and debug information.
-- Ensure error logs are securely stored and rotated to prevent excessive growth.
 
 ### Integration Details
 
@@ -64,11 +61,18 @@ For caching and performance, **Redis** is integrated into the project. The Redis
 2. **Redis**: Integrated to improve caching performance and reduce database load.
 3. **Google OAuth**: Implemented with `cURL` for flexibility and security.
 
-### File Size Handling
-
-- File uploads are validated based on MIME type and size restrictions.
-- Large file uploads are managed through chunked uploads to prevent memory overload.
-
----
-
+ **Technology Selection & Design**
+  1.Php
+  2. Html
+  3. Bootstrap
+  4. Css
+  5.Jquery
+  6.Ajax 
+  
+**Cloud Aws**
+1.Ec2
+2.Rds
+3.Security Groups
+  
+Replace with your own credentials to start working
 This documentation provides an overview of the system setup, architecture, and key decisions behind the implementation.
