@@ -36,9 +36,9 @@ if (!isset($_SESSION['user'])) {
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2 p-2">
                                             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-                                                Total Departments
+                                                Dashboard
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa fa-users fa-2x text-gray-800"></i>
@@ -59,7 +59,7 @@ if (!isset($_SESSION['user'])) {
                                             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
                                                 Total Departments
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="departments">2</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa fa-users fa-2x text-gray-800"></i>
@@ -80,7 +80,7 @@ if (!isset($_SESSION['user'])) {
                                             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
                                                 Total Employees
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="employees"></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa fa-address-book fa-2x text-gray-800"></i>
@@ -99,9 +99,9 @@ if (!isset($_SESSION['user'])) {
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2 p-2">
                                             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-                                                Total User Roles
+                                                Total User Roles 
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="roles"></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa fa-users fa-2x text-gray-800"></i>
@@ -122,7 +122,7 @@ if (!isset($_SESSION['user'])) {
                                             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
                                                 Total System Users
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="users"></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa fa-users fa-2x text-gray-800"></i>
@@ -143,7 +143,7 @@ if (!isset($_SESSION['user'])) {
                                             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
                                                 Total Permenant Empolyees
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="employeesPermenant"></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa fa-address-card fa-2x text-gray-800"></i>
@@ -162,7 +162,42 @@ if (!isset($_SESSION['user'])) {
 
             <!-- Scripts -->
             <?php require_once 'components/scripts.php'; ?>
+            <script src='./assets/js/path.config.js'></script>
+
+                <script>
+                    $(document).ready(function() {
+
+                loadData();
+
+                function loadData() {
+
+                    $.ajax({
+                        url: baseURL+"/src/api/dashboard/view-count.php",
+                        type: "POST",
+                        success: function(response) {
+                            if (response.status == true) {
+
+                                $("#roles").html(response.roles[0].count)
+                                $("#employees").html(response.employees[0].count)
+                                $("#departments").html(response.department[0].count)
+                                $("#employeesPermenant").html(response.employeesPermenant[0].count)
+                                $("#users").html(response.users[0].count)                               
+                            } else {
+                                toastr.warning(response.message, 'Error');
+                            }
+
+                        },
+                        error: function(response) {
+                            toastr.warning(response.responseJSON.message, 'Error');
+
+                        }
+                    });
 
 
+                }
+                });
+
+
+  </script>
             <!-- Footer -->
             <?php require_once 'components/footer.php'; ?>
